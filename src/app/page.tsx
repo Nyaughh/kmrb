@@ -158,7 +158,7 @@ export default function Home() {
 
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
               <motion.div
-                className="flex flex-col justify-center space-y-6"
+                className="flex flex-col justify-center space-y-4 sm:space-y-6"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
@@ -166,17 +166,16 @@ export default function Home() {
               >
                 <div className="space-y-4">
                   <motion.h1
-                    className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                    className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl/none flex flex-col gap-0"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   >
-                    <span className="relative inline-block min-w-48 min-h-16 text-left">
+                    <span className="relative inline-block min-w-36 sm:min-w-48 min-h-10 sm:min-h-16 text-left mb-0">
                       <span className="typewriter-jp text-foreground">光漏れ</span>
                       <span className="typewriter-en text-foreground">Komorebi</span>
                     </span>
-                    <br />
-                    <span className="relative mt-1 block">
+                    <span className="relative block -mt-1">
                       <motion.span 
                         className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 dark:from-amber-200 dark:via-amber-400 dark:to-amber-200 bg-clip-text text-transparent relative z-10 hover-glow"
                         initial={{ opacity: 0, x: -10 }}
@@ -206,19 +205,19 @@ export default function Home() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                   >
-                    <p className="text-foreground md:text-xl">
+                    <p className="text-base sm:text-lg md:text-xl text-foreground">
                       Where technology meets artistry. Crafting digital experiences that leave lasting impressions.
                     </p>
                   </motion.div>
                 </div>
                 <motion.div
-                  className="flex flex-col gap-3 min-[400px]:flex-row relative z-20"
+                  className="flex flex-row gap-3 relative z-20"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                 >
                   <Button
-                    className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-400 dark:hover:bg-amber-500 text-white dark:text-neutral-900 border-none font-medium pointer-events-auto cursor-pointer"
+                    className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-400 dark:hover:bg-amber-500 text-white dark:text-neutral-900 border-none font-medium pointer-events-auto cursor-pointer flex-1 sm:flex-initial text-sm sm:text-base"
                     onClick={() => scrollToSection("contact")}
                   >
                     Start Your Project
@@ -226,7 +225,7 @@ export default function Home() {
                   </Button>
                   <Button
                     variant="outline"
-                    className="border-amber-500/40 dark:border-amber-400/40 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 dark:hover:bg-amber-400/10 pointer-events-auto cursor-pointer"
+                    className="border-amber-500/40 dark:border-amber-400/40 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 dark:hover:bg-amber-400/10 pointer-events-auto cursor-pointer flex-1 sm:flex-initial text-sm sm:text-base"
                     onClick={() => scrollToSection("portfolio")}
                   >
                     View Our Work
@@ -317,20 +316,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="services" className="w-full py-16 md:py-24 lg:py-32 bg-muted relative">
+        <section id="services" className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-muted relative">
           <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8 sm:mb-12">
               <div className="space-y-2 max-w-3xl">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
                   What We Offer
                 </h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4">
+                <p className="max-w-[900px] text-sm sm:text-base text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4">
                   We provide end-to-end development services with meticulous attention to detail.
                 </p>
               </div>
             </div>
             <motion.div
-              className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+              className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
@@ -376,12 +375,12 @@ export default function Home() {
               ].map((service, index) => (
                 <motion.div key={index} variants={itemFade} className="h-full">
                   <Card className="bg-card/70 border-border backdrop-blur-sm hover:bg-card transition-colors duration-300 h-full">
-                    <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                      <div className="p-2 rounded-md bg-amber-400/10">{service.icon}</div>
-                      <CardTitle className="text-xl text-card-foreground">{service.title}</CardTitle>
+                    <CardHeader className="flex flex-row items-center gap-3 sm:gap-4 pb-2">
+                      <div className="p-1.5 sm:p-2 rounded-md bg-amber-400/10">{service.icon}</div>
+                      <CardTitle className="text-lg sm:text-xl text-card-foreground">{service.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-sm text-muted-foreground">{service.description}</CardDescription>
+                      <CardDescription className="text-xs sm:text-sm text-muted-foreground">{service.description}</CardDescription>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -403,14 +402,14 @@ export default function Home() {
               </div>
             </div>
             <motion.div
-              className="mx-auto max-w-3xl"
+              className="mx-auto w-full max-w-3xl px-4 sm:px-0"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
             >
                 <motion.div
-                className="group relative overflow-hidden rounded-lg shadow-lg h-[400px]"
+                className="group relative overflow-hidden rounded-lg shadow-lg aspect-[2/1.5] w-full"
                   variants={itemFade}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
@@ -419,30 +418,30 @@ export default function Home() {
                 </Link>
                   <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-amber-600/20 opacity-0 z-10"></div>
                   <img
-                  alt="Valdle - Valorant Game"
-                    className="h-full w-full object-cover"
-                  src="https://valdle.com/og-image.jpg"
-                  width="800"
-                  height="400"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = '/placeholder.svg?height=400&width=800&text=Valdle';
-                  }}
+                    alt="Valdle - Valorant Game"
+                    className="h-full w-full object-cover object-center"
+                    src="https://valdle.com/og-image.jpg"
+                    width="800"
+                    height="400"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = '/placeholder.svg?height=400&width=800&text=Valdle';
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 flex flex-col justify-end">
-                  <h3 className="text-2xl font-bold text-white">Valdle</h3>
-                  <p className="text-amber-300 mb-2">Client Project for <span className="inline-block">
-                    <span className="relative inline-block group">
-                      <span className="underline underline-offset-2 decoration-1 hover:text-amber-200 transition-colors duration-200 cursor-help">VALCORD</span>
-                      <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-neutral-800/95 text-xs text-amber-100 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-lg border border-amber-400/20">
-                        The official VALORANT Discord server network
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-4 sm:p-6 flex flex-col justify-end">
+                    <h3 className="text-lg sm:text-2xl font-bold text-white">Valdle</h3>
+                    <p className="text-sm sm:text-base text-amber-300 mb-1 sm:mb-2">Client Project for <span className="inline-block">
+                      <span className="relative inline-block group">
+                        <span className="underline underline-offset-2 decoration-1 hover:text-amber-200 transition-colors duration-200 cursor-help">VALCORD</span>
+                        <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-neutral-800/95 text-xs text-amber-100 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-lg border border-amber-400/20">
+                          The official VALORANT Discord server network
+                        </span>
                       </span>
-                    </span>
-                  </span>.</p>
-                  <p className="text-muted-foreground max-w-[600px]">
-                    A wordle like game that tests your Valorant knowledge with three unique mini-games, every day.
-                  </p>
+                    </span>.</p>
+                    <p className="text-xs sm:text-sm text-white/90 max-w-[600px]">
+                      A wordle like game that tests your Valorant knowledge with three unique mini-games, every day.
+                    </p>
                   </div>
                 </motion.div>
             </motion.div>
@@ -459,20 +458,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="pricing" className="w-full py-16 md:py-24 lg:py-32 bg-muted relative">
+        <section id="pricing" className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-muted relative">
           <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8 sm:mb-12">
               <div className="space-y-2 max-w-3xl">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
                   Transparent Pricing
                 </h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4">
+                <p className="max-w-[900px] text-sm sm:text-base text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4">
                   We offer flexible pricing options to suit your project needs and budget.
                 </p>
               </div>
             </div>
             <motion.div
-              className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3"
+              className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:gap-6 md:gap-8 md:grid-cols-3"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
@@ -534,12 +533,12 @@ export default function Home() {
                           Popular
                         </div>
                       )}
-                      <CardTitle className="text-2xl text-card-foreground">{plan.title}</CardTitle>
-                      <CardDescription className="text-muted-foreground">{plan.description}</CardDescription>
-                      <div className="mt-4 text-4xl font-bold text-card-foreground">{plan.price}</div>
+                      <CardTitle className="text-xl sm:text-2xl text-card-foreground">{plan.title}</CardTitle>
+                      <CardDescription className="text-sm text-muted-foreground">{plan.description}</CardDescription>
+                      <div className="mt-4 text-3xl sm:text-4xl font-bold text-card-foreground">{plan.price}</div>
                     </CardHeader>
                     <CardContent className="flex-1">
-                      <ul className="space-y-3 text-sm text-muted-foreground">
+                      <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
                         {plan.features.map((feature, i) => (
                           <li key={i} className="flex items-center">
                             <svg
@@ -552,7 +551,7 @@ export default function Home() {
                               strokeWidth="2"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                              className="mr-2 h-4 w-4 text-amber-400"
+                              className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-amber-400"
                             >
                               <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
@@ -561,9 +560,13 @@ export default function Home() {
                         ))}
                       </ul>
                     </CardContent>
-                    <div className="p-6 pt-0 mt-auto">
+                    <div className="p-4 sm:p-6 pt-0 mt-auto">
                       <Button
-                        className={`w-full ${plan.popular ? "bg-amber-400 hover:bg-amber-500 text-neutral-900 font-medium" : "bg-card hover:bg-border"} cursor-pointer`}
+                        className={`w-full ${
+                          plan.popular 
+                            ? "bg-amber-400 hover:bg-amber-500 text-neutral-900 font-medium" 
+                            : "bg-amber-400/20 hover:bg-amber-400/30 text-amber-500 dark:text-amber-400 border border-amber-400/30"
+                        } cursor-pointer text-sm sm:text-base transition-colors duration-200`}
                         onClick={() => selectPlan(plan.title, plan.price)}
                       >
                         Get Started
@@ -573,7 +576,7 @@ export default function Home() {
                 </motion.div>
               ))}
             </motion.div>
-            <div className="mt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-6 sm:mt-8 text-center text-xs sm:text-sm text-muted-foreground">
               <p>
                 Need a custom solution?{" "}
                 <Link
@@ -676,21 +679,21 @@ export default function Home() {
                 {
                   name: "Nyaughh",
                   position: "Co-Founder",
-                  bio: "Leading our technical vision with expertise in full-stack development and innovative solutions.",
+                  bio: "Ensures exceptional UX/UI design and oversees project delivery with a focus on client satisfaction and relationship management.",
                   imageUrl: "/images/team/nyaughh.jpg",
                   initials: "N",
                 },
                 {
                   name: "Alen",
                   position: "Co-Founder",
-                  bio: "Driving our creative direction and ensuring exceptional user experiences across all projects.",
+                  bio: "Expert in full-stack development with extensive experience, providing technical direction and innovative solutions for complex projects.",
                   imageUrl: "/images/team/alen.jpg",
                   initials: "A",
                 },
                 {
                   name: "John",
                   position: "Co-Founder",
-                  bio: "Overseeing project delivery and client relationships with a focus on excellence and innovation.",
+                  bio: "Specializes in backend architecture and optimization, ensuring robust and scalable solutions for enterprise-level applications.",
                   imageUrl: "/images/team/john.jpg",
                   initials: "J",
                 },
@@ -707,23 +710,23 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="w-full py-16 md:py-24 lg:py-32 bg-background relative">
+        <section id="contact" className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-background relative">
           <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8 sm:mb-12">
               <div className="space-y-2 max-w-3xl">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
                   Get In Touch
                 </h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4">
+                <p className="max-w-[900px] text-sm sm:text-base text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4">
                   Ready to start your project? Send us a message and we'll get back to you shortly.
                 </p>
               </div>
             </div>
             <div className="mx-auto max-w-2xl">
-              <form className="space-y-6" action="https://formspree.io/f/xzzeanql" method="POST">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <form className="space-y-4 sm:space-y-6" action="https://formspree.io/f/xzzeanql" method="POST">
+                <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-muted-foreground">
+                    <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-muted-foreground">
                       Name
                     </label>
                     <input
@@ -731,12 +734,12 @@ export default function Home() {
                       name="name"
                       id="name"
                       required
-                      className="mt-2 block w-full rounded-md border border-border bg-card/50 px-4 py-3 text-card-foreground placeholder-muted-foreground shadow-sm focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
+                      className="mt-1 sm:mt-2 block w-full rounded-md border border-border bg-card/50 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-card-foreground placeholder-muted-foreground shadow-sm focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-muted-foreground">
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-muted-foreground">
                       Email
                     </label>
                     <input
@@ -744,13 +747,13 @@ export default function Home() {
                       name="email"
                       id="email"
                       required
-                      className="mt-2 block w-full rounded-md border border-border bg-card/50 px-4 py-3 text-card-foreground placeholder-muted-foreground shadow-sm focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
+                      className="mt-1 sm:mt-2 block w-full rounded-md border border-border bg-card/50 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-card-foreground placeholder-muted-foreground shadow-sm focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
                       placeholder="you@example.com"
                     />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-muted-foreground">
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-muted-foreground">
                     Message
                   </label>
                   <textarea
@@ -758,14 +761,14 @@ export default function Home() {
                     name="message"
                     rows={6}
                     required
-                    className="mt-2 block w-full rounded-md border border-border bg-card/50 px-4 py-3 text-card-foreground placeholder-muted-foreground shadow-sm focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
+                    className="mt-1 sm:mt-2 block w-full rounded-md border border-border bg-card/50 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-card-foreground placeholder-muted-foreground shadow-sm focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
                     placeholder="Tell us about your project"
                   />
                 </div>
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center rounded-md bg-amber-400 px-8 py-3 text-base font-medium text-black hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-background transition-colors"
+                    className="w-full sm:w-auto inline-flex items-center justify-center rounded-md bg-amber-400 px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-black hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-background transition-colors"
                   >
                     Send Message
                   </button>
@@ -779,7 +782,7 @@ export default function Home() {
       <footer className="border-t border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Komorebi Digital Studio. All rights reserved.
+            © {new Date().getFullYear()} kmrb
           </p>
         </div>
       </footer>

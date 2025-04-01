@@ -6,6 +6,7 @@ import { Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 import { MobileMenu } from "@/components/mobile-menu"
+import { motion } from "framer-motion"
 
 interface HeaderProps {
   activeSection: string;
@@ -50,21 +51,29 @@ export function Header({ activeSection, onSectionChange }: HeaderProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      >
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link
-              className="flex items-center justify-center"
+              className="flex items-center justify-center group"
               href="#home"
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection("home")
               }}
             >
-              <span className="font-bold text-2xl bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                className="font-bold text-2xl bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent"
+              >
                 Komorebi
-              </span>
-              <span className="ml-2 text-sm text-amber-300">
+              </motion.span>
+              <span className="ml-2 text-sm text-amber-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 Digital Studio
               </span>
             </Link>
@@ -85,7 +94,7 @@ export function Header({ activeSection, onSectionChange }: HeaderProps) {
                 </Link>
               ))}
             </nav>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center space-x-2">
               <Button
                 variant="ghost"
                 size="icon"
@@ -104,33 +113,46 @@ export function Header({ activeSection, onSectionChange }: HeaderProps) {
                 Get in Touch
               </Button>
               <Button
-                variant="outline"
+                variant="ghost"
                 size="icon"
-                className="md:hidden text-foreground/60 border-border"
+                className="md:hidden relative w-10 h-10 rounded-full bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 border-none"
                 onClick={() => setMobileMenuOpen(true)}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5"
+                <motion.div
+                  animate={mobileMenuOpen ? "open" : "closed"}
+                  className="relative w-5 h-5 flex items-center justify-center"
                 >
-                  <line x1="4" x2="20" y1="12" y2="12" />
-                  <line x1="4" x2="20" y1="6" y2="6" />
-                  <line x1="4" x2="20" y1="18" y2="18" />
-                </svg>
+                  <motion.span
+                    variants={{
+                      closed: { rotate: 0, y: 0 },
+                      open: { rotate: 45, y: 0 },
+                    }}
+                    className="absolute w-5 h-0.5 bg-current block"
+                    style={{ top: "0.5rem" }}
+                  />
+                  <motion.span
+                    variants={{
+                      closed: { opacity: 1 },
+                      open: { opacity: 0 },
+                    }}
+                    className="absolute w-5 h-0.5 bg-current block"
+                    style={{ top: "0.75rem" }}
+                  />
+                  <motion.span
+                    variants={{
+                      closed: { rotate: 0, y: 0 },
+                      open: { rotate: -45, y: 0 },
+                    }}
+                    className="absolute w-5 h-0.5 bg-current block"
+                    style={{ top: "1rem" }}
+                  />
+                </motion.div>
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       <MobileMenu
         isOpen={mobileMenuOpen}
