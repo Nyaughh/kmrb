@@ -36,14 +36,10 @@ export function MobileMenu({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.15 }}
             className="fixed inset-0 z-50 lg:hidden"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+            <div
               className="fixed inset-0 bg-background/80 backdrop-blur-sm"
               onClick={onClose}
             />
@@ -51,13 +47,13 @@ export function MobileMenu({
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              transition={{ type: "tween", duration: 0.15 }}
               className="fixed inset-y-0 right-0 w-full max-w-sm bg-background/95 shadow-xl backdrop-blur supports-[backdrop-filter]:bg-background/60"
             >
               <div className="flex h-full flex-col">
                 <div className="flex h-16 items-center justify-between border-b border-border/40 px-4 sm:px-6 lg:px-8">
                   <Link
-                    className="flex items-center justify-center group"
+                    className="flex items-center justify-center"
                     href="#home"
                     onClick={(e) => {
                       e.preventDefault()
@@ -65,12 +61,11 @@ export function MobileMenu({
                       onClose()
                     }}
                   >
-                    <motion.span
-                      whileHover={{ scale: 1.05 }}
+                    <span
                       className="font-bold text-2xl bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent"
                     >
                       Komorebi
-                    </motion.span>
+                    </span>
                   </Link>
                   <div className="flex items-center space-x-2">
                     <Button
@@ -88,40 +83,38 @@ export function MobileMenu({
                       onClick={onClose}
                       className="relative w-10 h-10 rounded-full bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 border-none flex items-center justify-center"
                     >
-                      <motion.div
-                        className="relative w-5 h-5 flex items-center justify-center"
-                      >
+                      <div className="relative w-5 h-5 flex items-center justify-center">
                         <motion.span
                           initial={{ rotate: 0 }}
                           animate={{ rotate: 45 }}
+                          transition={{ duration: 0.2 }}
                           className="absolute w-5 h-0.5 bg-current block"
                           style={{ top: "0.75rem" }}
                         />
                         <motion.span
                           initial={{ opacity: 1 }}
                           animate={{ opacity: 0 }}
+                          transition={{ duration: 0.2 }}
                           className="absolute w-5 h-0.5 bg-current block"
                           style={{ top: "0.75rem" }}
                         />
                         <motion.span
                           initial={{ rotate: 0 }}
                           animate={{ rotate: -45 }}
+                          transition={{ duration: 0.2 }}
                           className="absolute w-5 h-0.5 bg-current block"
                           style={{ top: "0.75rem" }}
                         />
-                      </motion.div>
+                      </div>
                       <span className="sr-only">Close menu</span>
                     </Button>
                   </div>
                 </div>
                 <nav className="flex-1 overflow-y-auto px-6 py-6">
                   <div className="space-y-1">
-                    {navigationItems.map((item, index) => (
-                      <motion.div
+                    {navigationItems.map((item) => (
+                      <div
                         key={item.id}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
                       >
                         <Link
                           className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors duration-200 ${
@@ -137,7 +130,7 @@ export function MobileMenu({
                         >
                           {item.label}
                         </Link>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </nav>

@@ -51,28 +51,24 @@ export function Header({ activeSection, onSectionChange }: HeaderProps) {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+      <header
         className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       >
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link
-              className="flex items-center justify-center group"
+              className="flex items-center justify-center"
               href="#home"
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection("home")
               }}
             >
-              <motion.span
-                whileHover={{ scale: 1.05 }}
-                className="font-bold text-2xl bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent"
+              <span
+                className="font-bold text-2xl bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent transition-transform duration-200 hover:scale-105"
               >
                 Komorebi
-              </motion.span>
+              </span>
               <span className="ml-2 text-sm text-amber-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 Digital Studio
               </span>
@@ -152,7 +148,7 @@ export function Header({ activeSection, onSectionChange }: HeaderProps) {
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <MobileMenu
         isOpen={mobileMenuOpen}

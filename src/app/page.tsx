@@ -415,52 +415,46 @@ export default function Home() {
               viewport={{ once: true, margin: "-50px" }}
             >
                 <motion.div
-                className="group relative overflow-hidden rounded-lg shadow-lg aspect-[2/1.5] w-full"
+                className="group relative rounded-xl shadow-lg w-full bg-card/70 backdrop-blur-sm border border-border overflow-hidden"
                   variants={itemFade}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                <Link href="https://valdle.com" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20">
-                  <span className="sr-only">Visit Valdle</span>
-                </Link>
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-amber-600/20 opacity-0 z-10"></div>
-                  <img
-                    alt="Valdle - Valorant Game"
-                    className="h-full w-full object-cover object-center"
-                    src="https://valdle.com/og-image.jpg"
-                    width="800"
-                    height="400"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = '/placeholder.svg?height=400&width=800&text=Valdle';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-4 sm:p-6 flex flex-col justify-end">
-                    <h3 className="text-lg sm:text-2xl font-bold text-white">Valdle</h3>
-                    <p className="text-sm sm:text-base text-amber-300 mb-1 sm:mb-2">Client Project for <span className="inline-block">
-                      <span className="relative inline-block group">
-                        <span className="underline underline-offset-2 decoration-1 hover:text-amber-200 transition-colors duration-200 cursor-help">VALCORD</span>
-                        <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-neutral-800/95 text-xs text-amber-100 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-lg border border-amber-400/20">
-                          The official VALORANT Discord server network
+                  <div className="relative aspect-video overflow-hidden">
+                    <Link href="https://valdle.com" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20">
+                      <span className="sr-only">Visit Valdle</span>
+                    </Link>
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-amber-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                    <img
+                      alt="Valdle - Valorant Game"
+                      className="h-full w-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-300"
+                      src="https://valdle.com/og-image.jpg"
+                      width="1200"
+                      height="675"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.onerror = null;
+                        target.src = '/placeholder.svg?height=675&width=1200&text=Valdle';
+                      }}
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="space-y-3">
+                      <h3 className="text-2xl font-bold text-card-foreground group-hover:text-amber-400 transition-colors duration-200">Valdle</h3>
+                      <p className="text-base text-amber-400 mb-2">Client Project for <span className="inline-block">
+                        <span className="relative inline-block group/tooltip">
+                          <span className="underline underline-offset-2 decoration-1 hover:text-amber-500 transition-colors duration-200 cursor-help">VALCORD</span>
+                          <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-card text-xs text-amber-100 rounded-md opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-lg border border-amber-400/20">
+                            The official VALORANT Discord server network
+                          </span>
                         </span>
-                      </span>
-                    </span>.</p>
-                    <p className="text-xs sm:text-sm text-white/90 max-w-[600px]">
-                      A wordle like game that tests your Valorant knowledge with three unique mini-games, every day.
-                    </p>
+                      </span></p>
+                      <p className="text-sm text-muted-foreground max-w-[600px] leading-relaxed">
+                        A wordle like game that tests your Valorant knowledge with three unique mini-games, every day.
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
             </motion.div>
-            <div className="flex justify-center mt-12">
-              <Button 
-                variant="outline" 
-                className="border-amber-400/40 text-amber-400 hover:bg-amber-400/10"
-                onClick={() => window.open("https://valdle.com", "_blank")}
-              >
-                Visit Valdle
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
           </div>
         </section>
 
