@@ -11,6 +11,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { PlaceholderImage } from "@/components/ui/placeholder-image"
 import ProfileCard from "@/components/ui/profile-card"
 
+interface Testimonial {
+  name: string;
+  company: string;
+  quote: string | { __html: string };
+}
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home")
   const [mounted, setMounted] = useState(false)
@@ -608,7 +614,7 @@ export default function Home() {
               </div>
             </div>
             <motion.div
-              className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+              className="mx-auto grid max-w-3xl grid-cols-1 gap-8 md:grid-cols-1 lg:grid-cols-1"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
@@ -617,17 +623,18 @@ export default function Home() {
               {[
                 {
                   name: "Flokie",
-                  company: "??",
+                  company: "Owner at Paragon",
                   quote:
-                    "bla bla bla",
+                    "Hired Komorebi to develop Valdle for me and they crushed it. They're easy to work with and deliver quality work fast. Definitely recommend!",
                 },
                 {
                   name: "Cal",
-                  company: "??",
-                  quote:
-                    "bla bla bla",
+                  company: "Community Manager",
+                  quote: {
+                    __html: `"We've had the pleasure to work with Komorebi on a website for the official VALORANT Discord server, partnering with <a href="https://www.riotgames.com" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-500">Riot Games</a> & <a href="https://medal.tv" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-500">Medal.tv</a>. We're thankful to Komorebi for always considering our objectives with each partnered activation, and weaving those in with the community events so that we achieve our brand objectives. We're glad to have been able to deliver unique experiences partnering up together. We look forward to working closer even closer in the future."`
+                  },
                 },
-              ].map((testimonial, index) => (
+              ].map((testimonial: Testimonial, index) => (
                 <motion.div
                   key={index}
                   variants={itemFade}
@@ -642,7 +649,10 @@ export default function Home() {
                         </div>
                       </div>
                       <blockquote className="border-l-4 border-amber-400/40 pl-4 italic text-muted-foreground text-left mb-4 flex-grow">
-                        "{testimonial.quote}"
+                        {typeof testimonial.quote === 'string' ? 
+                          `"${testimonial.quote}"` : 
+                          <span dangerouslySetInnerHTML={testimonial.quote} />
+                        }
                       </blockquote>
                       <div>
                         <p className="font-semibold text-card-foreground">{testimonial.name}</p>
