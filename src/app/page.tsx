@@ -335,7 +335,7 @@ export default function Home() {
               </div>
             </div>
             <motion.div
-              className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
+              className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
@@ -443,7 +443,7 @@ export default function Home() {
                       <p className="text-base text-amber-400 mb-2">Client Project for <span className="inline-block">
                         <span className="relative inline-block group/tooltip">
                           <span className="underline underline-offset-2 decoration-1 hover:text-amber-500 transition-colors duration-200 cursor-help">VALCORD</span>
-                          <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-card text-xs text-amber-100 rounded-md opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-lg border border-amber-400/20">
+                          <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-card text-xs text-amber-100 dark:text-amber-100 text-black dark:text-amber-100 rounded-md opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-lg border border-amber-400/20">
                             The official VALORANT Discord server network
                           </span>
                         </span>
@@ -481,7 +481,7 @@ export default function Home() {
                 {
                   title: "Basic",
                   description: "For small projects and startups",
-                  price: "$1,500+",
+                  price: "$40/hour",
                   features: [
                     "Simple website or application",
                     "Up to 5 pages/screens",
@@ -493,7 +493,7 @@ export default function Home() {
                 {
                   title: "Professional",
                   description: "For medium-sized businesses",
-                  price: "$3,500+",
+                  price: "$60/hour",
                   features: [
                     "Complex website or application",
                     "Up to 15 pages/screens",
@@ -506,7 +506,7 @@ export default function Home() {
                 {
                   title: "Enterprise",
                   description: "For large businesses and organizations",
-                  price: "$5,000+",
+                  price: "$80/hour",
                   features: [
                     "Enterprise-grade solutions",
                     "Unlimited pages/screens",
@@ -673,7 +673,7 @@ export default function Home() {
               </div>
             </div>
             <motion.div
-              className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+              className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
@@ -681,33 +681,41 @@ export default function Home() {
             >
               {[
                 {
-                  name: "Nyaughh",
-                  position: "Co-Founder",
-                  bio: "Ensures exceptional UX/UI design and oversees project delivery with a focus on client satisfaction and relationship management.",
+                  name: "Aarin",
+                  position: "Frontend Developer & UX/UI Designer",
+                  bio: "Combines frontend development expertise with UX/UI design skills to create beautiful and functional user interfaces, while managing project delivery and client relationships.",
                   imageUrl: "/images/team/nyaughh.jpg",
-                  initials: "N",
+                  initials: "A",
                 },
                 {
                   name: "Alen",
-                  position: "Co-Founder",
-                  bio: "Expert in full-stack development with extensive experience, providing technical direction and innovative solutions for complex projects.",
+                  position: "Full Stack Developer",
+                  bio: "Expert in cloud infrastructure, hardware integration, and full-stack development, specializing in building scalable systems and complex technical solutions.",
                   imageUrl: "/images/team/alen.jpg",
                   initials: "A",
                 },
                 {
                   name: "John",
-                  position: "Co-Founder",
-                  bio: "Specializes in backend architecture and optimization, ensuring robust and scalable solutions for enterprise-level applications.",
+                  position: "Backend Architect",
+                  bio: "Intuitive developer who specializes in backend architecture and optimization, bringing creative solutions to complex technical challenges while ensuring scalable and efficient systems.",
                   imageUrl: "/images/team/john.jpg",
                   initials: "J",
+                },
+                {
+                  name: "Bilal",
+                  position: "Backend Developer",
+                  bio: "Problem-solving expert who specializes in backend development, creating APIs and scalable server-side solutions while tackling complex technical challenges.",
+                  imageUrl: "/images/team/bilal.jpg",
+                  initials: "B",
                 },
               ].map((member, index) => (
                 <motion.div
                   key={index}
                   variants={itemFade}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                  className="h-full"
                 >
-                  <ProfileCard {...member} />
+                  <ProfileCard {...member} className="h-full" />
                 </motion.div>
               ))}
             </motion.div>
