@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { MorphingText } from "../morphing-text"
 
 const fadeIn = {
   hidden: { opacity: 0, y: 10 },
@@ -19,7 +20,7 @@ interface HeroProps {
 
 export const Hero = ({ scrollToSection }: HeroProps) => {
   return (
-    <section id="home" className="w-full min-h-screen py-8 md:py-16 lg:py-24 xl:py-32 relative overflow-hidden bg-section-modern section-transition">
+    <section id="home" className="w-full min-h-screen py-16 lg:py-24 xl:py-32 relative overflow-hidden bg-section-modern section-transition">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="absolute inset-0 bg-dots-pattern opacity-30"></div>
 
@@ -30,25 +31,22 @@ export const Hero = ({ scrollToSection }: HeroProps) => {
           <div className="absolute bottom-1/4 left-1/2 w-16 h-16 md:w-24 md:h-24 bg-amber-300/12 rounded-full blur-xl animate-float"></div>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-12rem)]">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center min-h-[calc(100vh-8rem)] lg:min-h-[calc(100vh-12rem)] xl:min-h-[calc(100vh-16rem)]">
           <motion.div
-            className="flex flex-col justify-center space-y-6 md:space-y-8 relative z-20 text-center lg:text-left"
+            className="flex flex-col justify-center space-y-6 md:space-y-8 relative z-20 text-center md:text-left"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeIn}
           >
-            <div className="space-y-4 md:space-y-6">
+            <div className="space-y-4">
               <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight"
+                className="text-3xl sm:text-4xl md:text-3xl lg:text-4xl font-bold tracking-tighter leading-tight text-center md:text-left"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               >
-                <span className="relative inline-block min-w-32 sm:min-w-40 md:min-w-48 min-h-8 sm:min-h-12 md:min-h-16 text-center lg:text-left mb-2">
-                  <span className="typewriter-jp text-foreground">光漏れ</span>
-                  <span className="typewriter-en text-foreground">Komorebi</span>
-                </span>
+                <MorphingText texts={ ["光漏れ", "Komorebi"]} className="text-amber-400 text-center md:text-left text-4xl md:text-5xl lg:text-6xl" />
                 <span className="relative block">
                   <motion.span
                     className="gradient-text-modern relative z-10 hover-glow"
@@ -74,7 +72,7 @@ export const Hero = ({ scrollToSection }: HeroProps) => {
                 </span>
               </motion.h1>
               <motion.div
-                className="max-w-[600px] mx-auto lg:mx-0 relative z-20"
+                className="max-w-[600px] mx-auto relative z-20"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -85,7 +83,7 @@ export const Hero = ({ scrollToSection }: HeroProps) => {
               </motion.div>
             </div>
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 relative z-20 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-4 relative z-20 justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
