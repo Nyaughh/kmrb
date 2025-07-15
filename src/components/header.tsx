@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { MobileMenu } from "@/components/mobile-menu"
 import { motion } from "framer-motion"
 
@@ -22,10 +22,28 @@ export function Header({ activeSection, onSectionChange }: HeaderProps) {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const navRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({})
+  const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 })
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    const updateUnderline = () => {
+      const activeRef = navRefs.current[activeSection]
+      if (activeRef) {
+        setUnderlineStyle({
+          left: activeRef.offsetLeft,
+          width: activeRef.offsetWidth
+        })
+      }
+    }
+
+    updateUnderline()
+    window.addEventListener('resize', updateUnderline)
+    return () => window.removeEventListener('resize', updateUnderline)
+  }, [activeSection])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -73,11 +91,12 @@ export function Header({ activeSection, onSectionChange }: HeaderProps) {
                 Digital Studio
               </span>
             </Link>
-            <nav className="hidden md:flex items-center space-x-6">
+            <nav className="hidden md:flex items-center space-x-6 relative">
               {navigationItems.map((item) => (
                 <Link
+                  ref={(el) => { navRefs.current[item.id] = el }}
                   key={item.id}
-                  className={`text-sm font-medium hover:text-amber-400 transition-all duration-200 relative ${
+                  className={`text-sm font-medium hover:text-amber-400 transition-all duration-200 relative z-10 ${
                     activeSection === item.id ? "text-amber-400" : "text-foreground/70"
                   }`}
                   href={`#${item.id}`}
@@ -87,17 +106,13 @@ export function Header({ activeSection, onSectionChange }: HeaderProps) {
                   }}
                 >
                   {item.label}
-                  {activeSection === item.id && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full"
-                      layoutId="activeSection"
-                      initial={{ opacity: 0, scaleX: 0 }}
-                      animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
                 </Link>
               ))}
+              <motion.div
+                className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full"
+                animate={{ left: underlineStyle.left, width: underlineStyle.width }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              />
             </nav>
             <div className="flex items-center space-x-2">
               <Button

@@ -36,8 +36,8 @@ export function ClientWrapper() {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -80% 0px",
-      threshold: 0.5,
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0,
     }
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
