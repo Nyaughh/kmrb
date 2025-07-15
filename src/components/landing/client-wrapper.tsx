@@ -36,20 +36,24 @@ export function ClientWrapper() {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-100px 0px -100px 0px",
-      threshold: 0.15,
+      rootMargin: "-20% 0px -80% 0px",
+      threshold: 0.5,
     }
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id)
-        }
-      })
+      const visibleEntries = entries.filter(entry => entry.isIntersecting)
+      
+      if (visibleEntries.length > 0) {
+        const mostVisible = visibleEntries.reduce((prev, current) => {
+          return current.intersectionRatio > prev.intersectionRatio ? current : prev
+        })
+        
+        setActiveSection(mostVisible.target.id)
+      }
     }
 
     const observer = new IntersectionObserver(observerCallback, observerOptions)
-    const sectionIds = ["home", "services", "portfolio", "pricing", "testimonials", "contact"]
+    const sectionIds = ["home", "services", "portfolio", "pricing", "testimonials", "team", "contact"]
 
     sectionIds.forEach((id) => {
       const element = document.getElementById(id)

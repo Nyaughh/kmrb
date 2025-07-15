@@ -81,20 +81,29 @@ export const Team = () => {
   }
 
   return (
-    <section id="team" className="w-full py-16 md:py-24 lg:py-32 bg-muted relative">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="team" className="w-full min-h-screen py-20 md:py-28 lg:py-36 bg-section-dark section-transition relative overflow-hidden">
+      <div className="absolute inset-0 bg-mesh-pattern opacity-25"></div>
+      
+      {/* Modern floating elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 right-1/6 w-48 h-48 bg-amber-400/6 rounded-full blur-3xl animate-float-slower"></div>
+        <div className="absolute bottom-1/3 left-1/5 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl animate-float-slow"></div>
+        <div className="absolute top-2/3 right-1/3 w-32 h-32 bg-amber-300/8 rounded-full blur-xl animate-float"></div>
+      </div>
+      
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2 max-w-3xl">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl gradient-text-modern">
               Meet Our Team
             </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4">
-              The talented individuals behind our success.
+              The talented individuals behind our success, each bringing unique expertise and passion.
             </p>
           </div>
         </div>
         
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center min-h-[60vh]">
           <div className="relative w-[500px] h-[400px] hidden md:block">
             <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 500 400">
               <polygon
@@ -105,9 +114,10 @@ export const Team = () => {
                   })
                   .join(" ")}
                 fill="none"
-                stroke="rgb(148 163 184)"
-                strokeWidth="1"
-                strokeDasharray="5,5"
+                stroke="rgb(245, 158, 11)"
+                strokeWidth="2"
+                strokeDasharray="8,4"
+                className="opacity-30"
               />
             </svg>
             {teamMembers.map((member, index) => {
@@ -131,8 +141,8 @@ export const Team = () => {
                     relative w-20 h-20 rounded-full border-4 transition-all duration-300 cursor-pointer
                     ${
                       isHovered
-                        ? "border-amber-400 shadow-lg shadow-amber-400/50 scale-110"
-                        : "border-slate-600 hover:border-slate-400"
+                        ? "border-amber-400 shadow-xl shadow-amber-400/50 scale-110"
+                        : "border-amber-400/30 hover:border-amber-400/60"
                     }
                   `}
                   >
@@ -151,9 +161,9 @@ export const Team = () => {
                     ${position.y < 200 ? "top-full mt-4" : "bottom-full mb-4"}
                   `}
                   >
-                    <div className="bg-slate-800 border border-slate-600 rounded-lg p-3 shadow-xl w-64">
+                    <div className="glass-effect border border-amber-400/30 rounded-lg p-3 shadow-xl w-64">
                       <div className="text-center">
-                        <h3 className="text-white font-bold text-lg mb-1">{member.name}</h3>
+                        <h3 className="text-card-foreground font-bold text-lg mb-1">{member.name}</h3>
                         <p className="text-amber-400 text-sm font-medium mb-2">{member.role}</p>
                       </div>
                       <div
@@ -161,8 +171,8 @@ export const Team = () => {
                         absolute left-1/2 transform -translate-x-1/2 w-0 h-0
                         ${
                           position.y < 200
-                            ? "top-0 -translate-y-full border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-slate-600"
-                            : "bottom-0 translate-y-full border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-slate-600"
+                            ? "top-0 -translate-y-full border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-amber-400/30"
+                            : "bottom-0 translate-y-full border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-amber-400/30"
                         }
                       `}
                       />
@@ -172,7 +182,7 @@ export const Team = () => {
                     <p
                       className={`
                       text-sm font-medium text-center transition-colors duration-300 whitespace-nowrap
-                      ${isHovered ? "text-amber-400" : "text-slate-400"}
+                      ${isHovered ? "text-amber-400" : "text-muted-foreground"}
                     `}
                     >
                       {member.name}
@@ -183,8 +193,8 @@ export const Team = () => {
             })}
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <div className="text-center">
-                <h2 className="text-2xl font-bold text-white mb-2">Our Team</h2>
-                <div className="w-16 h-0.5 bg-amber-400 mx-auto" />
+                <h2 className="text-2xl font-bold text-card-foreground mb-2">Our Team</h2>
+                <div className="w-16 h-0.5 bg-gradient-to-r from-amber-400 to-amber-500 mx-auto" />
               </div>
             </div>
           </div>
@@ -193,7 +203,7 @@ export const Team = () => {
             {teamMembers.map((member, index) => (
               <div
                 key={member.id}
-                className="flex items-center gap-6"
+                className="flex items-center gap-6 group"
               >
                 <div className="flex-shrink-0">
                   <Image
@@ -201,16 +211,16 @@ export const Team = () => {
                     alt={member.name}
                     width={80}
                     height={80}
-                    className="h-20 w-20 rounded-full border-4 border-slate-200 dark:border-slate-700 object-cover"
+                    className="h-20 w-20 rounded-full border-4 border-amber-400/30 group-hover:border-amber-400/60 object-cover transition-all duration-300"
                   />
                 </div>
                 <div
-                  className="flex-grow border-b border-slate-200 dark:border-slate-700 pb-2"
+                  className="flex-grow border-b border-amber-400/20 pb-2"
                 >
-                  <h3 className="font-bold text-xl text-foreground">
+                  <h3 className="font-bold text-xl text-card-foreground group-hover:text-amber-400 transition-colors duration-300">
                     {member.name}
                   </h3>
-                  <p className="text-md text-amber-500">{member.role}</p>
+                  <p className="text-md text-amber-400/80">{member.role}</p>
                 </div>
               </div>
             ))}
